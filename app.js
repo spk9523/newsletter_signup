@@ -2,6 +2,7 @@ const express = require("express"); // Import the Express framework
 const bodyParser = require("body-parser"); // Import the body-parser middleware
 const request = require("request"); // Import the request module
 const https = require("https"); // Import the built-in https module
+const config = require("./config");
 
 const app = express(); // Create an instance of the Express application
 
@@ -35,11 +36,14 @@ app.post("/", function(req, res) {
 
     const jsonData = JSON.stringify(data); // Convert data to JSON string
 
-    const url = "https://us10.api.mailchimp.com/3.0/lists/3877100365"; // Mailchimp API endpoint
+    var apiKey = config.API_KEY;
+    var listID = config.LIST_ID;
+
+    const url = `https://us10.api.mailchimp.com/3.0/lists/${listID}`; // Mailchimp API endpoint
 
     const options = {
         method: "POST",
-        auth: "prakash:4f4beae73f601c4bde881ac98b11f73d-us10" // API authentication credentials
+        auth: `prakash:${apiKey}` // API authentication credentials
     };
 
     // Make an HTTPS request to the Mailchimp API
@@ -63,8 +67,3 @@ app.post("/failure", function(req, res) {
 app.listen(process.env.PORT || 3000, function() {
     console.log("Server is running on port 3000"); // Start the server and listen on port 3000
 });
-
-
-//api id : 4f4beae73f601c4bde881ac98b11f73d-us10
-
-//list id : 3877100365
