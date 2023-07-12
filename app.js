@@ -11,7 +11,7 @@ app.use(express.static("public")); // Serve static files from the "public" direc
 app.use(bodyParser.urlencoded({extended: true})); // Parse URL-encoded data
 
 app.get("/", function(req, res) {
-    res.sendFile(__dirname + "/signup.html"); // Send the "signup.html" file as the response for GET requests to the root URL ("/")
+    res.sendFile(__dirname + "/index.html"); // Send the "index.html" file as the response for GET requests to the root URL ("/")
 });
 
 app.post("/", function(req, res) {
