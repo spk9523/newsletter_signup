@@ -50,9 +50,9 @@ app.post("/", function(req, res) {
     // Make an HTTPS request to the Mailchimp API
     const request = https.request(url, options, function(response) {
         if (response.statusCode === 200) {
-            res.sendFile(__dirname + "/success.html"); // Send the "success.html" file as the response if the request is successful
+            res.sendFile(__dirname + "/success.html", { headers: { "Content-Type": "text/html" } }); // Send the "success.html" file as the response if the request is successful
         } else {
-            res.sendFile(__dirname + "/failure.html"); // Send the "failure.html" file as the response if the request fails
+            res.sendFile(__dirname + "/failure.html", { headers: { "Content-Type": "text/html" } }); // Send the "failure.html" file as the response if the request fails
         }
     });
 
