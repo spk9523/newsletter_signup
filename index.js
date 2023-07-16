@@ -36,8 +36,9 @@ app.post("/", function(req, res) {
 
     const jsonData = JSON.stringify(data); // Convert data to JSON string
 
-    var apiKey = config.API_KEY;
-    var listID = config.LIST_ID;
+    const apiKey = config.API_KEY;
+    const listID = config.LIST_ID;
+
 
     const url = `https://us10.api.mailchimp.com/3.0/lists/${listID}`; // Mailchimp API endpoint
 
